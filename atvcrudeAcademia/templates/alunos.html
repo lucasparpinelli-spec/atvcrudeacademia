@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Alunos</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Cadastro de Alunos</h1>
+
+    <a href="/">
+        <button>Página Inicial</button>
+    </a>
+
+    <form action="/alunos/enviar" method="post">
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>Plano:</label>
+        <input type="text" name="plano" required>
+
+        <label>Idade:</label>
+        <input type="number" name="idade" required>
+
+        <label>Mensalidade:</label>
+        <input type="number" step="0.01" name="mensalidade" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Alunos Cadastrados</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Plano</th>
+            <th>Idade</th>
+            <th>Mensalidade</th>
+            <th>Ações</th>
+        </tr>
+
+        {% for aluno in lista %}
+        <tr>
+            <td>{{ aluno[0] }}</td>
+            <td>{{ aluno[1] }}</td>
+            <td>{{ aluno[2] }}</td>
+            <td>{{ aluno[3] }}</td>
+            <td>{{ aluno[4] }}</td>
+            <td>
+                <a href="/alunos/editar/{{ aluno[0] }}">Editar</a>
+
+                <form action="/alunos/excluir/{{ aluno[0] }}" method="post">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
