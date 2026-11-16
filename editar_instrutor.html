@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Instrutor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Editar Instrutor</h1>
+
+    <a href="/instrutores">
+        <button>Voltar</button>
+    </a>
+
+    <form action="/instrutores/atualizar/{{ instrutor[0] }}" method="post">
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{{ instrutor[1] }}" required>
+
+        <label>Especialidade:</label>
+        <input type="text" name="especialidade" value="{{ instrutor[2] }}" required>
+
+        <label>Carga Horária:</label>
+        <input type="number" name="carga_horaria" value="{{ instrutor[3] }}" required>
+
+        <label>Data de Admissão:</label>
+        <input type="date" name="data_admissao" value="{{ instrutor[4] }}" required>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

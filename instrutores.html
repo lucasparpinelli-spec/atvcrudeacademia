@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Instrutores</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Cadastro de Instrutores</h1>
+
+    <a href="/">
+        <button>Página Inicial</button>
+    </a>
+
+    <form action="/instrutores/enviar" method="post">
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>Especialidade:</label>
+        <input type="text" name="especialidade" required>
+
+        <label>Carga Horária:</label>
+        <input type="number" name="carga_horaria" required>
+
+        <label>Data de Admissão:</label>
+        <input type="date" name="data_admissao" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Instrutores Cadastrados</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Especialidade</th>
+            <th>Carga Horária</th>
+            <th>Data de Admissão</th>
+            <th>Ações</th>
+        </tr>
+
+        {% for instrutor in lista %}
+        <tr>
+            <td>{{ instrutor[0] }}</td>
+            <td>{{ instrutor[1] }}</td>
+            <td>{{ instrutor[2] }}</td>
+            <td>{{ instrutor[3] }}</td>
+            <td>{{ instrutor[4] }}</td>
+            <td>
+                <a href="/instrutores/editar/{{ instrutor[0] }}">Editar</a>
+
+                <form action="/instrutores/excluir/{{ instrutor[0] }}" method="post">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
